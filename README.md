@@ -73,5 +73,10 @@ npm run seed:all
 ```
 
 ## Authors
-@AbdulAziz
+
+👤 **Abdul Aziz**
+
 Hi, I'm Abdul Aziz! I'm an Associate Software Engineer passionate about building scalable and efficient software solutions.
+
+🔗 Connect with me on [LinkedIn](https://linkedin.com/connect2abdulaziz)
+
