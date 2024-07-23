@@ -54,23 +54,32 @@ Install dependencies:
 
 ## bash
 ```
-Copy code
+
 npm install
 Run database migrations:
 ```
 
 ## bash
 ```
-Copy code
 npm run migrate
 Seed initial data (if applicable):
 ```
 
 ## bash
 ```
-Copy code
 npm run seed:all
 ```
+
+
+## Usage
+After installation and setup, you can start the server with:
+
+# bash
+```
+npm start
+```
+The server will start on the port specified in your .env file (APP_PORT). You can then use the API endpoints for authentication, buying, and selling projects as per your application's requirements.
+
 
 ## Authors
 
