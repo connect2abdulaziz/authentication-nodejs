@@ -27,7 +27,7 @@ To run this project, you will need to set up the following environment variables
 
 Example `.env` file:
 
-plaintext
+```plaintext
 NODE_ENV=development
 APP_PORT=3000
 DB_USERNAME=myusername
@@ -39,32 +39,33 @@ JWT_SECRET_KEY=mysecretkey
 JWT_EXPIRES_IN=7d
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=adminpassword
+```
 
-#Installation
+## Installation
 Follow these steps to install and set up the project:
 
 Clone the repository:
 
-bash
+## bash
 Copy code
 git clone <your-repo-url>
 cd <your-project>
 Install dependencies:
 
-bash
+## bash
 Copy code
 npm install
 Run database migrations:
 
-bash
+## bash
 Copy code
 npm run migrate
 Seed initial data (if applicable):
 
-bash
+## bash
 Copy code
 npm run seed:all
 
-Authors
+## Authors
 @AbdulAziz
 Hi, I'm Abdul Aziz! I'm an Associate Software Engineer passionate about building scalable and efficient software solutions.
