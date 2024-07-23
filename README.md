@@ -53,9 +53,11 @@ cd <your-project>
 Install dependencies:
 
 ## bash
+```
 Copy code
 npm install
 Run database migrations:
+```
 
 ## bash
 Copy code
