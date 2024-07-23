@@ -50,7 +50,7 @@ const login = catchAsync (async (req, res, next) => {
     }
     const result = await user.findOne({where: {email}});
     
-    if (!result || !(await bcrypt.compare(body.password, result.password))) {
+    if (!result || !(await bcrypt.compare(password, result.password))) {
         return next(new AppError('Invalid email or password', 400));
     }
     const token = generateToken({
