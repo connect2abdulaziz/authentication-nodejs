@@ -60,13 +60,17 @@ Run database migrations:
 ```
 
 ## bash
+```
 Copy code
 npm run migrate
 Seed initial data (if applicable):
+```
 
 ## bash
+```
 Copy code
 npm run seed:all
+```
 
 ## Authors
 @AbdulAziz
