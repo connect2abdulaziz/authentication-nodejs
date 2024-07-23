@@ -1,58 +1,70 @@
-# Authentication Method
+# Authentication Restful API with JWT, PostgreSQL, Node.js, and Express.js
 
-Brief description of your project. Include what it does, why it is useful, and any other relevant information.
+This project provides a RESTful API for authentication using JWT (JSON Web Tokens), PostgreSQL for database storage, and is built with Node.js and Express.js. Users can buy and sell their projects online through this API.
 
 ## Table of Contents
 
+- [Environment Variables](#environment-variables)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
+- [Authors](#authors)
 
+## Environment Variables
 
-## Installation
+To run this project, you will need to set up the following environment variables. Create a `.env` file in the root of your project and add these variables with appropriate values:
 
-Provide instructions on how to install and set up your project. Consider including prerequisites, dependencies, and step-by-step installation instructions.
+- `NODE_ENV` - Environment mode (`development`, `production`, etc.)
+- `APP_PORT` - Port number for the server (e.g., `3000`)
+- `DB_USERNAME` - Username for PostgreSQL database
+- `DB_PASSWORD` - Password for PostgreSQL database
+- `DB_NAME` - Name of the PostgreSQL database
+- `DB_HOST` - Hostname for PostgreSQL database
+- `DB_PORT` - Port number for PostgreSQL database
+- `JWT_SECRET_KEY` - Secret key for JWT encryption
+- `JWT_EXPIRES_IN` - Expiration time for JWT tokens (e.g., `7d` for 7 days)
+- `ADMIN_EMAIL` - Email address for the admin user
+- `ADMIN_PASSWORD` - Password for the admin user
 
-```bash
-# Example installation steps
-git clone https://github.com/your-username/your-project.git
-cd your-project
+Example `.env` file:
+
+plaintext
+NODE_ENV=development
+APP_PORT=3000
+DB_USERNAME=myusername
+DB_PASSWORD=mypassword
+DB_NAME=mydatabase
+DB_HOST=localhost
+DB_PORT=5432
+JWT_SECRET_KEY=mysecretkey
+JWT_EXPIRES_IN=7d
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=adminpassword
+
+#Installation
+Follow these steps to install and set up the project:
+
+Clone the repository:
+
+bash
+Copy code
+git clone <your-repo-url>
+cd <your-project>
+Install dependencies:
+
+bash
+Copy code
 npm install
-```
+Run database migrations:
 
-## Usage
+bash
+Copy code
+npm run migrate
+Seed initial data (if applicable):
 
-Explain how to use your project. Provide examples and show expected outputs if applicable. Include any configuration settings or environment variables that need to be set.
+bash
+Copy code
+npm run seed:all
 
-```bash
-# Example usage
-npm start
-```
-
-## Documentation
-
-Link to additional documentation or describe where users can find more information. This could include links to API documentation, examples, or other helpful resources.
-
-## Contributing
-
-Provide guidelines if you want others to contribute to your project. Include information on how to submit bug fixes, improvements, or new features. 
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature-branch`)
-3. Make changes and commit them (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature-branch`)
-5. Create a pull request
-
-## License
-
-This project is licensed under the MIT License -
-
-## Acknowledgements
-
-
-
----
-
-
-
+Authors
+@AbdulAziz
+Hi, I'm Abdul Aziz! I'm an Associate Software Engineer passionate about building scalable and efficient software solutions.
