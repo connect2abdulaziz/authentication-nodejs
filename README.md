@@ -56,13 +56,13 @@ Install dependencies:
 ```
 
 npm install
-Run database migrations:
+
 ```
 
 ## bash
 ```
 npm run migrate
-Seed initial data (if applicable):
+
 ```
 
 ## bash
