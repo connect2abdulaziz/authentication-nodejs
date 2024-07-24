@@ -1,10 +1,9 @@
-"use strict";
+'use strict';
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../../config/database");
-const Comment = require("./comment");
 
 
-const Post = sequelize.define(
+const Comment = sequelize.define(
   "post",
   {
     id: {
@@ -45,6 +44,14 @@ const Post = sequelize.define(
         key: "id",
       },
     },
+    postId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "post", 
+        key: "id",
+      },
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
@@ -60,16 +67,13 @@ const Post = sequelize.define(
   },
   {
     sequelize,
-    tableName: "post",
+    tableName: "comment",
     paranoid: true,
     freezeTableName: true,
-    modelName: "post",
+    modelName: "comment",
   }
 );
 
-//association
-Post.hasMany(Comment, { foreignKey: "postId" });
-Comment.belongsTo(Post, { foreignKey: "postId" });
 
 
-module.exports = Post;
+module.exports = Comment;

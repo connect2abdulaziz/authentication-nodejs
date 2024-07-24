@@ -4,6 +4,7 @@ const AppError = require('../../utils/appError');
 const bcrypt = require('bcrypt');
 const sequelize = require('../../config/database');
 const Post = require('./post'); 
+const Comment = require('./comment');
 
 const User = sequelize.define(
   'user',
@@ -116,6 +117,8 @@ const User = sequelize.define(
 
 // association definition
 User.hasMany(Post, { foreignKey: 'userId' });
+User.hasMany(Comment, { foreignKey: 'userId' });
 Post.belongsTo(User, { foreignKey: 'userId' });
+Comment.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = User;
