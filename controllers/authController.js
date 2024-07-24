@@ -11,7 +11,7 @@ const generateToken = (payload) => {
 }
 const signup = catchAsync(async (req, res, next) => {
     const body = req.body;
-    if (!['0', '1', '2'].includes(body.userType)) {
+    if (body.userType && !['0', '1', '2'].includes(body.userType)) {
         return next(new AppError("Invalid user type", 400));
     }
     const newUser = await user.create({
