@@ -9,6 +9,7 @@ const app = express();
 const authRouter = require('./routes/authRoute');
 const postRouter = require('./routes/postRoute');
 const userRouter = require('./routes/userRoute');
+const commentRouter = require('./routes/commentRoute');
 
 
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/posts', postRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/comments', commentRouter);
 
 app.use('*', 
     catchAsync(async (err, req, res) => {
