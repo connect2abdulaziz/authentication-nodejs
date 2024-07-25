@@ -9,6 +9,7 @@ const generateToken = (payload) => {
         expiresIn: process.env.JWT_EXPIRES_IN,
     });
 }
+
 const signup = catchAsync(async (req, res, next) => {
     const body = req.body;
     if (body.userType && !['0', '1', '2'].includes(body.userType)) {

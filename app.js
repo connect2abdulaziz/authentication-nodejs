@@ -1,10 +1,12 @@
 require('dotenv').config({path: `${process.cwd()}/.env`});
 
-const catchAsync = require('./utils/catchAsync');
 const express = require('express');
+const app = express();
+
+const catchAsync = require('./utils/catchAsync');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
-const app = express();
+
 
 const authRouter = require('./routes/authRoute');
 const postRouter = require('./routes/postRoute');
@@ -15,8 +17,7 @@ const commentRouter = require('./routes/commentRoute');
 app.use(express.json());
 
 
-
-// all routes will be there
+// all routes 
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/posts', postRouter);
