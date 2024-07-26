@@ -8,7 +8,6 @@ const AppError = require("../utils/appError");
 const createComment = catchAsync(async (req, res, next) => {
   const body = req.body;
   const uId = req.user.id;
-  
 
   const newComment = await comment.create({
     title: body.title,
@@ -28,7 +27,7 @@ const createComment = catchAsync(async (req, res, next) => {
 
 //get all comments
 const getComments = catchAsync(async (req, res, next) => {
-    const comments = await comment.findAll({
+  const comments = await comment.findAll({
     include: user,
     order: [["createdAt", "DESC"]],
   });
@@ -101,7 +100,6 @@ const deleteCommentById = catchAsync(async (req, res, next) => {
       userId: uId,
     },
   });
-
 
   if (!result) {
     return next(

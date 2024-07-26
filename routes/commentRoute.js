@@ -12,7 +12,6 @@ router
   .route("/")
   .post(authentication, createComment)
   .get(authentication, getComments);
- 
 
 router
   .route("/:id")

@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../../config/database");
-
 
 const Comment = sequelize.define(
   "post",
@@ -38,9 +37,9 @@ const Comment = sequelize.define(
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false, 
+      allowNull: false,
       references: {
-        model: "user", 
+        model: "user",
         key: "id",
       },
     },
@@ -48,7 +47,7 @@ const Comment = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "post", 
+        model: "post",
         key: "id",
       },
     },
@@ -73,7 +72,5 @@ const Comment = sequelize.define(
     modelName: "comment",
   }
 );
-
-
 
 module.exports = Comment;

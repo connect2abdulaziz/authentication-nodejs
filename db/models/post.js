@@ -3,7 +3,6 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../../config/database");
 const Comment = require("./comment");
 
-
 const Post = sequelize.define(
   "post",
   {
@@ -39,9 +38,9 @@ const Post = sequelize.define(
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false, 
+      allowNull: false,
       references: {
-        model: "user", 
+        model: "user",
         key: "id",
       },
     },
@@ -70,6 +69,5 @@ const Post = sequelize.define(
 //association
 Post.hasMany(Comment, { foreignKey: "postId" });
 Comment.belongsTo(Post, { foreignKey: "postId" });
-
 
 module.exports = Post;

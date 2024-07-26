@@ -24,9 +24,9 @@ const createPost = catchAsync(async (req, res, next) => {
 
 //get all posts
 const getPosts = catchAsync(async (req, res, next) => {
-    // const userId = req.user.id;
-    // console.log("userId: " + userId);
-    const posts = await post.findAll({
+  // const userId = req.user.id;
+  // console.log("userId: " + userId);
+  const posts = await post.findAll({
     include: user,
     //where: { userId },
     order: [["createdAt", "DESC"]],
