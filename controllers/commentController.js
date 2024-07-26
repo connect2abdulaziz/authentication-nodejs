@@ -1,8 +1,8 @@
 const catchAsync = require("../utils/catchAsync");
-const post = require("../db/models/post");
 const user = require("../db/models/user");
 const comment = require("../db/models/comment");
 const AppError = require("../utils/appError");
+const appSuccess = require("../utils/appSuccess");
 
 //create new post
 const createComment = catchAsync(async (req, res, next) => {
@@ -35,11 +35,8 @@ const getComments = catchAsync(async (req, res, next) => {
     return next(new AppError("No comments found", 404));
   }
 
-  return res.status(200).json({
-    status: "success",
-    message: "Comments retrieved successfully",
-    data: comments,
-  });
+  return res.status(200).json(appSuccess("Comments retrieved successfully", comments));
+
 });
 
 // get comment by id
@@ -53,11 +50,7 @@ const getCommentById = catchAsync(async (req, res, next) => {
     return next(new AppError("Invalid comment id", 400));
   }
 
-  return res.status(200).json({
-    status: "success",
-    message: "Comment retrieved successfully",
-    data: result,
-  });
+  return res.status(200).json(appSuccess("Comment retrieved successfully", result));
 });
 
 //update comment
@@ -82,11 +75,8 @@ const updateCommentById = catchAsync(async (req, res, next) => {
   result.body = body.body;
   const updatedComment = await result.save();
 
-  return res.status(200).json({
-    status: "success",
-    message: "Comment updated successfully",
-    data: updatedComment,
-  });
+  return res.status(200).json(appSuccess("Comment updated successfully",updatedComment));
+ 
 });
 
 //delete comment
@@ -109,10 +99,8 @@ const deleteCommentById = catchAsync(async (req, res, next) => {
 
   await result.destroy();
 
-  return res.json({
-    status: "success",
-    message: "Comment deleted successfully",
-  });
+  return res.json(appSuccess("Comment deleted successfully", commentId));
+  
 });
 
 module.exports = {

@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const appSuccess = require("../utils/appSuccess");
 
 const generateToken = (payload) => {
   return jwt.sign(payload, process.env.JWT_SECRET_KEY, {
@@ -34,12 +35,8 @@ const signup = catchAsync(async (req, res, next) => {
   result.token = generateToken({
     id: result.id,
   });
+  return res.status(200).json(appSuccess("User created successfully",result));
 
-  return res.status(200).json({
-    status: "success",
-    message: "User created successfully.",
-    data: result,
-  });
 });
 
 const login = catchAsync(async (req, res, next) => {
@@ -55,12 +52,8 @@ const login = catchAsync(async (req, res, next) => {
   const token = generateToken({
     id: result.id,
   });
-
-  return res.status(200).json({
-    status: "success",
-    message: "User logged in successfully.",
-    data: token,
-  });
+  return res.status(200).json(appSuccess("User logged in successfully", token));
+    
 });
 
 const authentication = catchAsync(async (req, res, next) => {
