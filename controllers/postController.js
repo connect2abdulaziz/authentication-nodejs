@@ -3,25 +3,34 @@ const post = require("../db/models/post");
 const user = require("../db/models/user");
 const AppError = require("../utils/appError");
 const appSuccess = require("../utils/appSuccess");
+const { validatePost } = require('../utils/validators/postValidator');
+const PostService = require('../services/postService'); 
 
-//create new post
+
+// Create new post
 const createPost = catchAsync(async (req, res, next) => {
-  const body = req.body;
-  const id = req.user.id;
-  const newPost = await post.create({
-    title: body.title,
-    body: body.body,
-    userId: id,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
+  // Extract title and body from the request body
+  const { title, body } = req.body;
+  const { id: userId } = req.user;
 
-  return res.status(201).json({
-    status: "success",
-    message: "Post created successfully",
-    data: newPost,
-  });
+  // Validate title, body, and userId
+  const { error } = validatePost({ title, body, userId });
+  if (error) {
+    return next(new AppError(error.details[0].message, 400)); // Pass validation error
+  }
+
+  // Create new post using PostService
+  const newPost = await PostService.createPost(userId, title, body);
+  
+  if (!newPost) {
+    return next(new AppError("Failed to create post", 500)); // Provide a status code for server errors
+  }
+
+  // Return success response
+  return res.status(201).json(appSuccess("Post created successfully", newPost));
 });
+
+
 
 //get all posts
 const getPosts = catchAsync(async (req, res, next) => {
