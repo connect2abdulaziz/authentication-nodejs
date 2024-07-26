@@ -87,5 +87,5 @@ The server will start on the port specified in your .env file (APP_PORT). You ca
 
 Hi, I'm Abdul Aziz! I'm an Associate Software Engineer passionate about building scalable and efficient software solutions.
 
-🔗 Connect with me on [LinkedIn](https://linkedin.com/connect2abdulaziz)
+🔗 Connect with me on [LinkedIn](https://linkedin.com/in/connect2abdulaziz)
 
