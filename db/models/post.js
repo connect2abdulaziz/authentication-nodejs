@@ -16,26 +16,11 @@ const Post = sequelize.define(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Title is required",
-        },
-        notEmpty: {
-          msg: "Title cannot be empty",
-        },
-      },
     },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Body is required",
-        },
-        notEmpty: {
-          msg: "Body cannot be empty",
-        },
-      },
+  
     },
     userId: {
       type: DataTypes.INTEGER,
@@ -52,10 +37,6 @@ const Post = sequelize.define(
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE,
-    },
-    deletedAt: {
-      type: DataTypes.DATE,
-      defaultValue: null,
     },
   },
   {
