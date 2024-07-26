@@ -2,6 +2,7 @@ const catchAsync = require("../utils/catchAsync");
 const post = require("../db/models/post");
 const user = require("../db/models/user");
 const AppError = require("../utils/appError");
+const appSuccess = require("../utils/appSuccess");
 
 //create new post
 const createPost = catchAsync(async (req, res, next) => {
@@ -24,11 +25,8 @@ const createPost = catchAsync(async (req, res, next) => {
 
 //get all posts
 const getPosts = catchAsync(async (req, res, next) => {
-    // const userId = req.user.id;
-    // console.log("userId: " + userId);
-    const posts = await post.findAll({
+  const posts = await post.findAll({
     include: user,
-    //where: { userId },
     order: [["createdAt", "DESC"]],
   });
   console.log(posts);
@@ -36,11 +34,8 @@ const getPosts = catchAsync(async (req, res, next) => {
     return next(new AppError("No posts found", 404));
   }
 
-  return res.status(200).json({
-    status: "success",
-    message: "Posts retrieved successfully",
-    data: posts,
-  });
+  return res.status(200).json(appSuccess("Posts retrieved successfully", posts));
+
 });
 
 // get post by id
@@ -83,11 +78,8 @@ const updatePostById = catchAsync(async (req, res, next) => {
   result.body = body.body;
   const updatedPost = await result.save();
 
-  return res.status(200).json({
-    status: "success",
-    message: "Post updated successfully",
-    data: updatedPost,
-  });
+  return res.status(200).json(appSuccess("Post updated successfully", updatedPost));
+
 });
 
 //delete post
@@ -108,11 +100,7 @@ const deletePostById = catchAsync(async (req, res, next) => {
   }
 
   await result.destroy();
-
-  return res.json({
-    status: "success",
-    message: "Post deleted successfully",
-  });
+  return res.json(appSuccess("Post deleted successfully", postId));
 });
 
 module.exports = {

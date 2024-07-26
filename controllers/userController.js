@@ -2,6 +2,7 @@ const { Sequelize } = require('sequelize');
 const user = require('../db/models/user');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const appSuccess = require('../utils/appSuccess');
 
 const getAllUser = catchAsync(async (req, res, next) => {
     const users = await user.findAndCountAll({
@@ -15,10 +16,8 @@ const getAllUser = catchAsync(async (req, res, next) => {
     if (!users) {
         return next(new AppError('No users found in the database'));
     }
-    return res.status(200).json({
-        status: 'success',
-        data: users,
-    });
+    return res.status(200).json(appSuccess('Users Retrieved Successfully', users));
+
 });
 
 //get user by id
@@ -30,10 +29,8 @@ const getUserById = catchAsync(async (req, res, next) => {
     if (!userResponse) {
         return next(new AppError('User not found'));
     }
-    return res.status(200).json({
-        status:'success',
-        data: userResponse,
-    });
+    return res.status(200).json(appSuccess("User Retrieved Successfully", userResponse));
+
 });
 
 //delete user
@@ -51,10 +48,7 @@ const deleteUser = catchAsync(async (req, res, next) => {
         return next(new AppError('User not found'));
     }
     await userResponse.destroy();
-    return res.json({
-        status:'success',
-        message: 'User deleted successfully',
-    });
+    return res.json(appSuccess("User deleted successfully", userId));
 });
 
 // update user 
@@ -69,10 +63,7 @@ const updateUser = catchAsync(async (req, res, next) => {
     if (!updatedUser) {
         return next(new AppError('Fail to update user'));
     }
-    return res.json({
-        status:'success',
-        message: 'User updated successfully',
-    });
+    return res.json(appSuccess("User updated successfully", updatedUser));
 });
 
 module.exports = { getAllUser, getUserById, deleteUser, updateUser };
